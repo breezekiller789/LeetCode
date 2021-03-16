@@ -9,6 +9,8 @@
 # Space : O(n)
 # https://www.youtube.com/watch?v=s9fokUqJ76A&ab_channel=NeetCode
 
+# 最下面註解的是我的暴力解法，非常暴力，丟上去judge到6的時候直接TLE :(
+
 
 def backtrack(s='', left=0, right=0):
     if len(s) == 2*n:
