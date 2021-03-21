@@ -1,4 +1,4 @@
-# 刷LeetCode人生
+# LeetCode練習
 ```
-好玩又有趣:)
+python <File_Name>
 ```
