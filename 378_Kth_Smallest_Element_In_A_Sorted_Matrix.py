@@ -14,10 +14,10 @@ Array = []
 for i in matrix:        # O(n^2)
     Array.extend(i)     # 先把matrix所有element都取出來
 
-Array = sorted(Array)
+Array = sorted(Array)   # Sort, O(n^2 * logn)
 
 low = 0
-high = len(Array)-1
+high = len(Array)-1     # Binary Search, O(logn)
 while low <= high:
     mid = (low+high)/2
     if mid+1 == k:
