@@ -3,6 +3,7 @@
 # https://leetcode.com/problems/contains-duplicate/
 # Joma class有講過這個，用一個演算法來做，線性時間，常數空間。
 # https://www.youtube.com/watch?v=pKO9UjSeLew&ab_channel=JomaTech
+# https://www.youtube.com/watch?v=9YTjXqqJEFE
 
 # nums = [1, 2, 3, 1]
 # nums = [1, 2, 3, 4]
