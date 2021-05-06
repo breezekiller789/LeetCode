@@ -7,6 +7,7 @@
 # 1. Using the Longest Common Subsequence algorithm to solve this problem
 
 # Method 2, Using DP
+# Solution: https://www.youtube.com/watch?v=sSno9rV8Rhg&t=1102s
 
 
 # Initial Thoughts, doesn't work because this problem is requiring the orders of
