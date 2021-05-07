@@ -24,6 +24,8 @@ t = "ahbgdc"
 # t = "ahbgdc"
 # s = "acb"
 # t = "ahbgdc"
+s = "abpcplea"
+t = "abpcplaaa"
 length_s = len(s)
 length_t = len(t)
 
