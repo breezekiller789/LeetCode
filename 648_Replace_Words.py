@@ -23,6 +23,7 @@ for string in dictionary:
         hashTable[string] = 0
 sentences = sentence.split(" ")
 for i, string in enumerate(sentences):
+# print hashTable
     length = len(string)
     for idx in range(length):
         if string[0:idx+1] in hashTable:
