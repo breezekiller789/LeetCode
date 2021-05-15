@@ -3,6 +3,9 @@
 
 # https://leetcode.com/problems/minimum-ascii-delete-sum-for-two-strings/
 
+# 我現在可以算出Longest Common Subsequence了，但是題目是要s1, s2刪掉的字元ascii
+# 總值，看了解答還是看不懂，先跳。
+
 
 def LCS(s1, s2):
     s1Length = len(s1)
