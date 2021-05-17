@@ -16,41 +16,54 @@ newInterval = [4, 8]
 # newInterval = [13, 18]
 # ==========Code Starts=========
 
-length = len(intervals)
+
+intervals.append(newInterval)
+intervals = sorted(intervals)
+Ans = []
+for idx, interval in enumerate(intervals):
+    if not Ans or interval[0] > Ans[-1][-1]:
+        Ans.append(interval)
+    else:
+        Ans[-1] = [Ans[-1][0], max(Ans[-1][-1], interval[1])]
+print Ans
 
 
-def is_Within_Interval(idx, val):
-    if val >= intervals[idx][0] and val <= intervals[idx][1]:
-        return True
-    return False
+# Initial thoughts
+# length = len(intervals)
 
 
-def Bin_Search(offset, key):
-    low = 0
-    high = length - 1
-    while low <= high:
-        mid = (low+high)/2
-        # print low, mid, high
-        if intervals[mid][offset] >= key:
-            if is_Within_Interval(mid, key):
-                return mid
-            high = mid - 1
-        elif intervals[mid][offset] <= key:
-            if is_Within_Interval(mid, key):
-                return mid
-            low = mid + 1
+# def is_Within_Interval(idx, val):
+#     if val >= intervals[idx][0] and val <= intervals[idx][1]:
+#         return True
+#     return False
 
 
-Left_Idx = Bin_Search(0, newInterval[0])
-Right_Idx = Bin_Search(1, newInterval[1])
-print Left_Idx, Right_Idx
+# def Bin_Search(offset, key):
+#     low = 0
+#     high = length - 1
+#     while low <= high:
+#         mid = (low+high)/2
+#         # print low, mid, high
+#         if intervals[mid][offset] >= key:
+#             if is_Within_Interval(mid, key):
+#                 return mid
+#             high = mid - 1
+#         elif intervals[mid][offset] <= key:
+#             if is_Within_Interval(mid, key):
+#                 return mid
+#             low = mid + 1
 
-if Left_Idx == Right_Idx:
-    exit()
 
-Low_Bound = intervals[Left_Idx][0]
-Upper_Bound = intervals[Right_Idx][1]
-for idx in range(Left_Idx, Right_Idx+1):
-    del intervals[Left_Idx]
-intervals.insert(Left_Idx, [Low_Bound, Upper_Bound])
-print intervals
+# Left_Idx = Bin_Search(0, newInterval[0])
+# Right_Idx = Bin_Search(1, newInterval[1])
+# print Left_Idx, Right_Idx
+
+# if Left_Idx == Right_Idx:
+#     exit()
+
+# Low_Bound = intervals[Left_Idx][0]
+# Upper_Bound = intervals[Right_Idx][1]
+# for idx in range(Left_Idx, Right_Idx+1):
+#     del intervals[Left_Idx]
+# intervals.insert(Left_Idx, [Low_Bound, Upper_Bound])
+# print intervals
