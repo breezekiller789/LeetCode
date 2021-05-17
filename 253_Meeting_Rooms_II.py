@@ -5,6 +5,10 @@ import heapq
 
 # https://leetcode.com/problems/meeting-rooms-ii/
 
+# We don't quite care about start time, we care more about end time. We want to
+# keep the earliest ending event as highest priority, so that's why we use
+# min-heap to store the end time of event
+
 intervals = [
     [0, 30],
     [5, 10],
@@ -21,13 +25,17 @@ intervals = [
     [15, 18]
 ]
 
-intervals.sort()
+intervals.sort()        # Sort first
 heap = []
 for interval in intervals:
-    print heap
+
+    # If there is no overlap, no need to add room, but we still need to update
+    # the earliest ending meeting.
     if heap and interval[0] >= heap[0]:
         heapq.heapreplace(heap, interval[1])
+
+    # Enter this if there is a overlap push the current event's end time to the
+    # heap
     else:
         heapq.heappush(heap, interval[1])
-print heap
 print len(heap)
