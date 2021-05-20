@@ -14,25 +14,21 @@ class TreeNode(object):
         self.right = right
 
 
-def Max_Path(root):
-    global Global_Max
-    if not root.left and not root.right:
-        return root.val
-    else:
-        # 把左邊最大，跟右邊最大相加。
-        Left_Max = Max_Path(root.left)
-        Right_Max = Max_Path(root.right)
-        Sum = Left_Max + Right_Max + root.val
-        if Sum > Global_Max:
-            Global_Max = Sum
-        return Sum
+def Preorder(root):
+    global Max
+    if not root:
+        return 0
+    leftPath = max(0, Preorder(root.left))
+    rightPath = max(0, Preorder(root.right))
+    currentPath = root.val + leftPath + rightPath
+    Max = max(Max, currentPath)
+    return root.val + max(leftPath, rightPath)
 
 
-Global_Max = 0
 root = TreeNode(-10)
 root.left = TreeNode(9)
 root.right = TreeNode(20)
 root.right.left = TreeNode(15)
 root.right.right = TreeNode(7)
-Max_Path(root)
-print Global_Max
+Max = float("-inf")
+print Preorder(root)
