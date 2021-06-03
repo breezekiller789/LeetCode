@@ -27,22 +27,33 @@ s = "12"
 # ("6" is different from "06")
 # s = "06"
 
-hashTable = dict()
-for i in range(1, 27):
-    hashTable[str(i)] = chr(i-1 + ord("A"))
 
-# dp[i][j] -> s[i~j] decode ways
+def RecursiveDecode(s, start, alreadyChecked):
 
-length = len(s)
-dp = [[0 for _ in range(length)] for _ in range(length)]
-for i in range(length-1, -1, -1):
-    dp[i][i] = 0
-    for j in range(i+1, length):
-        if s[i:j+1] in hashTable:
-            dp[i][j] = dp[i+1][j] + 2
-        else:
-            if s[i] == "0":
-                dp[i][j] = dp[i+1][j]
-            else:
-                dp[i][j] = dp[i+1][j] + 1
-print dp[0][length-1]
+    # Base case
+    if start >= len(s):
+        return 1
+    elif start == len(s)-1 and s[-1] != '0':
+        return 1
+    if s[start] == '0':
+        return 0
+
+    # If already checked, return it
+    if alreadyChecked[start]:
+        return alreadyChecked[start]
+
+    # Get the number of pattern recursively from start + 1
+    numberOfPattern = RecursiveDecode(s, start+1, alreadyChecked)
+
+    # If current 2 digits are valid, then we Recursively get the number of
+    # start+2
+    if int(s[start:start+2]) >= 1 and int(s[start:start+2]) <= 26:
+        numberOfPattern += RecursiveDecode(s, start+2, alreadyChecked)
+
+    # Memoization
+    alreadyChecked[start] = numberOfPattern
+    return numberOfPattern
+
+
+alreadyChecked = [None for _ in range(len(s))]
+print RecursiveDecode(s, 0, alreadyChecked)
